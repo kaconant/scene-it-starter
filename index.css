@@ -14,3 +14,24 @@ body {
 	margin-top: 20px;
 }
 
+.card-deck {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 0 1 30%;
+	justify-content: space-between;    
+	align-content: center;
+	padding: 30px;
+}
+
+.card-body {
+	text-align: center;
+}
+
+.card img {
+    height: 300px;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+}
