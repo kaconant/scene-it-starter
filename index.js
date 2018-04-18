@@ -9,12 +9,11 @@ $(function() {
             finalHTML += "<h5 class='title card-title'>" + currentMovie.Title + "</h5>";
             finalHTML += "<h6 class='year'>Released: " + currentMovie.Year + "</h6>";
             finalHTML += "<div class='button card-footer'>";
-            finalHTML += "<a href=''class='btn btn-primary'>Add Movie</a>";
+            finalHTML += "<button data-id='" + currentMovie.imdbID + "'class='addMovie btn btn-primary'>Add Movie</button>";
             finalHTML += "</div>"
             finalHTML += "</div>"
             finalHTML += "</div>"
             finalHTML += "</div>"
-
         });
         return finalHTML;
     };
@@ -22,6 +21,22 @@ $(function() {
         e.preventDefault();
         var movieResults = renderMovies(movieData);
         $(".card-deck").html(movieResults);
+    });
+
+    $(".card-deck").on("click", ".addMovie", function() {
+        var imdbID = $(this).data("id");
+        var movie = movieData.find(function(currentMovie) {
+            return currentMovie.imdbID === imdbID;
+        });
+        
+        var watchlistJSON = localStorage.getItem("watchlist");
+        var watchlist = JSON.parse(watchlistJSON);
+        if (watchlist === null) {
+            watchlist = [];
+        }; 
+        watchlist.push(movie);
+        watchlistJSON = JSON.stringify(watchlist);
+        localStorage.setItem("watchlist", watchlistJSON);
     });
 });
 
