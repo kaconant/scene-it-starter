@@ -1,6 +1,11 @@
 var watchlistJSON = localStorage.getItem("watchlist");
 var watchlist = JSON.parse(watchlistJSON);
 
+if (watchlist === null) {
+    watchlist = [];
+};
+
+
 $(function() {
     var movieResults = renderMovies(watchlist);
     $(".card-deck").append(movieResults);
@@ -10,7 +15,11 @@ $(function() {
         watchlist.forEach(function(currentMovie) {
             finalHTML += "<div class='card-deck'>";
             finalHTML += "<div class='movie card border-primary'>";
-            finalHTML += "<img class='card-img-top' alt='Card img cap' src=" + currentMovie.Poster + "/>";
+            if (currentMovie.Poster == "N/A") {
+                finalHTML += "<img class='card-img-top' alt='Card img cap' src='no_image.png'/>";
+            } else {
+                finalHTML += "<img class='card-img-top' alt='Card img cap' src=" + currentMovie.Poster + "/>"; 
+            };
             finalHTML += "<div class='card-body'>";
             finalHTML += "<h5 class='title card-title'>" + currentMovie.Title + "</h5>";
             finalHTML += "<h6 class='year'>Released: " + currentMovie.Year + "</h6>";
