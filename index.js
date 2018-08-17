@@ -23,6 +23,7 @@ $(function() {
         });
         return finalHTML;
     };
+    
     $("form").submit(function(e) {
         e.preventDefault();
         var searchString = $(".search-bar").val();

@@ -1,9 +1,10 @@
 body {
-	background-color: #B2E9FD;
+	background-image: url("img/background.jpg"); 
+	font-family: 'Eczar', sans-serif;
 }
 
 .header h2 {
-	color: #DC4247;
+	color: rgb(66, 146, 220);
 }
 
 .header p {
@@ -24,7 +25,7 @@ body {
 	flex: 0 1 30%;
 	justify-content: space-around;    
 	align-content: center;
-	padding: 30px;
+	padding: 10px;
 }
 
 
